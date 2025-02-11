@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Last Heist</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Oswald:wght@300;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.cdnfonts.com/css/gotham-serif-bold" rel="stylesheet">
+    <link href="https://fonts.cdnfonts.com/css/belltrain-regular" rel="stylesheet">
+    <link href="https://fonts.cdnfonts.com/css/verbal-diarrhea" rel="stylesheet">
+    <link href="https://fonts.cdnfonts.com/css/superstar-m54" rel="stylesheet">
+    <link rel="stylesheet" media="screen" href="https://fontlibrary.org//face/butler" type="text/css"/>
+</head>
+<body>
+    <!-- Intro Section -->
+    <div id="intro">
+        <div class="overlay"></div>
+        <div class="intro-content">
+            <h1 class="title fade-in">The Last Heist</h1>
+            <button onclick="window.location.href='rule.html'">Let's look into the guidelines</button> 
+            <button onclick="window.location.href='puzzle.html'">Ready for the thrilling experience</button>
+        </div>
+        </div>
+    </div>
+
+
+    <div id="game" class="hidden">
+        <img id="scene-img" src="" alt="Scene Image">
+        <p id="story-text" class="fade-in"></p>
+        <div id="choices"></div>
+    </div>
+
+    <audio id="background-music" loop>
+        <source src="assets/sound/intro.mp3" type="audio/mpeg">
+    </audio>
+    <audio id="click-sound">
+        <source src="sounds/click.mp3" type="audio/mpeg">
+    </audio>
+
+    <audio id="alarm-sound">
+        <source src="sounds/alarm.mp3" type="audio/mpeg">
+    </audio>
+
+    <audio id="gunshot-sound">
+        <source src="sounds/gunshot.mp3" type="audio/mpeg">
+    </audio>
+
+    
+</body>
+</html>
+
+    
