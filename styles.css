@@ -43,6 +43,7 @@ body {
     text-align: center;
     margin: 0;
     padding: 0;
+    max-height: 100vh;
     overflow: hidden;
 }
 
@@ -126,6 +127,8 @@ button:hover {
 
 
 
+
+
 button:active {
     transform: scale(0.9);
     box-shadow: 0px 0px 30px rgba(255, 255, 0, 1);
@@ -174,7 +177,7 @@ button:active {
     margin: 20px 0;
     padding: 15px;
     background: rgba(0, 0, 0, 0.7);
-    border-left: 5px solid #d32f2f;
+    
     width: 80%;
     text-align: center;
     border-radius: 5px;
@@ -255,4 +258,120 @@ button:active {
 @keyframes fadeIn {
     from { opacity: 0; transform: translateY(10px); }
     to { opacity: 1; transform: translateY(0); }
+}
+
+#scene-container {
+    position: relative;
+    display: inline-block;
+}
+
+
+
+
+#game {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: white;
+}
+
+
+#scene-img {
+    display: none;
+}
+
+
+#grunge-overlay {
+    margin-top: -75px;
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.5);
+}
+
+#story-card {
+    position: relative;
+    background: rgba(0, 0, 0, 0.8);
+    padding: 20px;
+    border-radius: 10px;
+    max-width: 600px;
+    box-shadow: 0px 0px 15px rgba(255, 0, 0, 0.8);
+}
+
+
+.choice-button {
+    display: block;
+    background: red;
+    border: none;
+    color: white;
+    padding: 10px;
+    margin: 10px 0;
+    font-size: 18px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.choice-button:hover {
+    background: darkred;
+}
+
+/* Timer styling */
+#timer {
+    position: absolute;
+    top: 20px;
+    right: 60px;
+    background: rgba(0, 0, 0, 0.8);
+    color: yellow;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-weight: bold;
+    font-size: 18px;
+    border: 2px solid red;
+    box-shadow: 0px 0px 10px rgba(255, 0, 0, 0.7);
+    text-align: center;
+}
+
+/* Timer warning effect when time is running out */
+@keyframes timerBlink {
+    0% { color: yellow; }
+    50% { color: red; }
+    100% { color: yellow; }
+}
+
+/* Apply blinking effect when 5 seconds remain */
+.timer-warning {
+    animation: timerBlink 0.7s infinite alternate;
+}
+.intro-screen {
+    background: url('assets/images/chara\ intro.webp') center/cover no-repeat;
+    color: white;
+    text-align: center;
+    padding: 50px;
+    font-size: 18px;
+    max-width: 700px;
+    margin: auto;
+    border-radius: 10px;
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.5);
+}
+
+.intro-screen button {
+    background-color: gold;
+    color: black;
+    font-size: 20px;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    margin-top: 20px;
+}
+
+.intro-screen button:hover {
+    background-color: darkgoldenrod;
 }

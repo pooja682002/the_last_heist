@@ -8,14 +8,22 @@
     <link href="https://fonts.cdnfonts.com/css/gotham-serif-bold" rel="stylesheet">
     <link href="https://fonts.cdnfonts.com/css/belltrain-regular" rel="stylesheet">
     <link href="https://fonts.cdnfonts.com/css/verbal-diarrhea" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    
+
 </head>
 <body>
+    
 
     <div id="game">
-        <img id="scene-img" src="" alt="Scene Image">
-        <p id="story-text"></p>
-        <div id="choices"></div>
+        <div id="grunge-overlay"></div>
+        <div id="story-card">
+            <p id="story-text"></p>
+            <div id="choices"></div>
+        </div>
+        <div id="timer" class="timer"></div> 
     </div>
+    
     
 
     <audio id="background-music" loop>

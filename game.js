@@ -59,14 +59,14 @@ const story = {
 
     escapeRoute: {
         text: "You take a secret tunnel and escape, but not without casualties. You reach safety.",
-        img: "iassets/images/escaperoute.webp",
+        img: "assets/images/escaperoute.webp",
         choices: [],
         ending: "The Great Escape"
     },
 
     vaultTunnel: {
         text: "The team tunnels through the vault, but security is tight. A shootout begins!",
-        img: "images/shootout.jpg",
+        img: "assets/images/vault tunnel.webp",
         sound: "gunshot-sound",
         choices: [
             { text: "Fight your way out", next: "fight" },
@@ -76,7 +76,7 @@ const story = {
 
     negotiate: {
         text: "You try negotiating, but the police aren’t buying it. They storm in.",
-        img: "images/storming.jpg",
+        img: "assets/images/negotiate.webp",
         choices: [
             { text: "Go out guns blazing", next: "fight" },
             { text: "Use hostages", next: "hostages" }
@@ -85,7 +85,7 @@ const story = {
 
     fight: {
         text: "Bullets fly. The team is going down. You see an opening to escape. Take it?",
-        img: "images/final-battle.jpg",
+        img: "assets/images/fight.webp",
         sound: "gunshot-sound",
         choices: [
             { text: "Yes, escape", next: "escapeRoute" },
@@ -114,6 +114,7 @@ const story = {
         ending: "A Bullet for Glory"
     }
 };
+let timerInterval; // Global timer variable
 
 function startGame() {
     let gameContainer = document.getElementById("game");
@@ -126,11 +127,15 @@ function startGame() {
 function playScene(scene) {
     let current = story[scene];
 
-    document.getElementById("scene-img").src = current.img;
+    // Set background image dynamically
+    let gameContainer = document.getElementById("game");
+    gameContainer.style.backgroundImage = `url('${current.img}')`;
+
+    // Update text content
     document.getElementById("story-text").textContent = current.text;
 
     let choicesDiv = document.getElementById("choices");
-    choicesDiv.innerHTML = ""; 
+    choicesDiv.innerHTML = ""; // Clear previous choices
 
     if (current.sound) {
         let sound = document.getElementById(current.sound);
@@ -142,16 +147,57 @@ function playScene(scene) {
         return;
     }
 
-   
+    // Clear previous timer and remove warning effect
+    clearInterval(timerInterval);
+    let timerElement = document.getElementById("timer");
+    timerElement.classList.remove("timer-warning");
+
+    // If there are choices, display them and start the timer
     if (current.choices && current.choices.length > 0) {
         current.choices.forEach(choice => {
             let button = document.createElement("button");
             button.textContent = choice.text;
             button.classList.add("choice-button"); 
-            button.onclick = () => playScene(choice.next);
+            button.onclick = () => {
+                clearInterval(timerInterval);
+                playScene(choice.next);
+            };
             choicesDiv.appendChild(button);
         });
+
+        // Start countdown timer (15 seconds)
+        startCountdown(scene);
     } else {
         console.warn("No choices available for this scene:", scene);
     }
+}
+
+function startCountdown() {
+    let timeLeft = 15;
+    let timerElement = document.getElementById("timer");
+    timerElement.textContent = `Time: ${timeLeft}s`;
+
+    timerInterval = setInterval(() => {
+        timeLeft--;
+        timerElement.textContent = `Time left: ${timeLeft}s`;
+
+        // Apply warning effect when 5 seconds remain
+        if (timeLeft === 5) {
+            timerElement.classList.add("timer-warning");
+        }
+
+        // If time runs out, show SweetAlert and restart game
+        if (timeLeft === 0) {
+            clearInterval(timerInterval);
+
+            Swal.fire({
+                title: "Time's up!",
+                text: "You took too long to decide. Restarting the game...",
+                icon: "warning",
+                confirmButtonText: "OK"
+            }).then(() => {
+                startGame(); // Restart game
+            });
+        }
+    }, 1000);
 }
