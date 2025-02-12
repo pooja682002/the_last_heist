@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Last Heist</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Alumni+Sans+Collegiate+One:wght@700&family=Joti+One&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <div id="intro1-container">
+        <div id="intro1-overlay"></div>
+        <div id="intro1-content">
+            <div id="intro1-text">
+                
+                <p>For years, you've studied the Central Bank of Spain—its security, its weaknesses, and its fortune.</p>
+                <p>You were an insider, trusted with secrets. Then, they framed you. They took everything.</p>
+                <p>Now, you're back—not as a banker, but as a mastermind.</p>
+                <p>Your crew is ready: Diego, the hacker. Elena, the strategist. Lucas, the driver. And you—the leader.</p>
+                <p>The plan is flawless… until an informant betrays you. The police are onto you.</p>
+                <p>Time is running out. Will this be the greatest heist in history, or your final downfall?</p>
+            </div>
+            <button id="start1-game">Begin the Heist </button>
+        </div>
+    </div>
+
+    <audio id="intro-music" src="assets/sounds/background-music.mp3" autoplay loop></audio>
+
+    <script>
+        document.getElementById("start1-game").addEventListener("click", function () {
+            window.location.href = "game.html";  
+        });
+    </script>
+
+</body>
+</html>

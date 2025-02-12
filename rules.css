@@ -37,7 +37,7 @@ body::before {
 h1 {
     font-size: 2.5rem;
     align-items: justify;
-    
+    font-family: "Bungee Inline", serif;
     color: #B22222;
     text-shadow: 2px 2px 5px rgba(50, 0, 0, 0.6);
     animation: slideInFromTop 1.5s ease-out;
@@ -53,6 +53,7 @@ h1 {
 }
 
 .rule-book h2 {
+    font-family: "Bungee Inline", serif;
     color: #492b2b;
     font-size: 1.8rem;
     border-bottom: 2px solid #ff0000;
@@ -90,6 +91,7 @@ h1 {
 .rule-book li:nth-child(5) { animation-delay: 2s; }
 
 button {
+    font-family: "Bungee Inline", serif;
     background: #a50000;
     color: white;
     font-size: 1.3rem;

@@ -1,14 +1,7 @@
 const story = {
-    start: {
-        text: "For years, you've studied the Central Bank of Spain—its security, its weaknesses, and its fortune. You were once an insider, a trusted employee who knew every vault, every guard shift, every blind spot. Then, they betrayed you. Framed for a crime you didn’t commit, you lost everything. But now, you’re back—not as a banker, but as a mastermind.\n\nYour crew is handpicked. Diego, the hacker, can crack any security system. Elena, the strategist, thinks three steps ahead. Lucas, the getaway driver, has never been caught. And then there’s The Professor, the one who orchestrates everything from the shadows. The plan is perfect… or so you thought.\n\nAn informant has leaked something. The police might already be onto you. Time is running out. The moment of truth is here.\n\nWill this be the greatest heist in history, or your final downfall?",
-        img: "assets/images/chara intro.webp",
-        sound: "background-music",
-        choices: [
-            { text: "Begin the Heist", next: "start1" }
-        ]
-    },
     
-    start1: {
+    
+    start: {
         text: "As you arrive at the bank, the city is eerily silent, the plan set in motion. But a shadow in the alley and flickering streetlights spark a sense of unease—something feels off.",
         img: "assets/images/Scene1.webp",
         sound: "alarm-sound",
@@ -95,21 +88,21 @@ const story = {
 
     surrender: {
         text: "You surrender and go to jail, but your team escapes. The heist is a failure.",
-        img: "images/jail.jpg",
+        img: "assets/images/surrender.webp",
         choices: [],
         ending: "Betrayal & Capture"
     },
 
     hostages: {
         text: "You use the hostages as leverage and manage to escape, but at a cost.",
-        img: "images/escape.jpg",
+        img: "assets/images/Hostage.webp",
         choices: [],
         ending: "The Professor’s Legacy"
     },
 
     dead: {
         text: "The shootout ends. You go down in a blaze of glory. The heist is over.",
-        img: "images/death.jpg",
+        img: "assets/images/dead.webp",
         choices: [],
         ending: "A Bullet for Glory"
     }
@@ -186,18 +179,30 @@ function startCountdown() {
             timerElement.classList.add("timer-warning");
         }
 
-        // If time runs out, show SweetAlert and restart game
+        // If time runs out, show custom popup and restart game
         if (timeLeft === 0) {
             clearInterval(timerInterval);
-
-            Swal.fire({
-                title: "Time's up!",
-                text: "You took too long to decide. Restarting the game...",
-                icon: "warning",
-                confirmButtonText: "OK"
-            }).then(() => {
-                startGame(); // Restart game
-            });
+            showPopup();
         }
     }, 1000);
 }
+
+function showPopup() {
+    const popup = document.createElement("div");
+    popup.classList.add("custom-popup");
+    popup.innerHTML = `
+        <div class="popup-content">
+            <h2>Time's up!</h2>
+            <p>You took too long to decide. Restarting the game...</p>
+            <button onclick="closePopup()">OK</button>
+        </div>
+    `;
+    document.body.appendChild(popup);
+}
+
+function closePopup() {
+    const popup = document.querySelector(".custom-popup");
+    popup.remove();
+    startGame(); // Restart the game
+}
+
