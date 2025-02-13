@@ -9,6 +9,8 @@ body {
     padding: 0;
     max-height: 100vh;
     overflow: hidden;
+    overflow-y: hidden;
+    overflow-x: hidden;
 }
 
 
@@ -136,6 +138,8 @@ button:active {
     color: white;
     padding: 20px;
     transition: opacity 1s ease-in-out;
+    overflow-y: hidden;
+    overflow-x: hidden;
 }
 
 
