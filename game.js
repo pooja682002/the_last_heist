@@ -107,7 +107,7 @@ const story = {
         ending: "A Bullet for Glory"
     }
 };
-let timerInterval; // Global timer variable
+let timerInterval; 
 
 function startGame() {
     let gameContainer = document.getElementById("game");
@@ -120,15 +120,15 @@ function startGame() {
 function playScene(scene) {
     let current = story[scene];
 
-    // Set background image dynamically
+   
     let gameContainer = document.getElementById("game");
     gameContainer.style.backgroundImage = `url('${current.img}')`;
 
-    // Update text content
+    
     document.getElementById("story-text").textContent = current.text;
 
     let choicesDiv = document.getElementById("choices");
-    choicesDiv.innerHTML = ""; // Clear previous choices
+    choicesDiv.innerHTML = ""; 
 
     if (current.sound) {
         let sound = document.getElementById(current.sound);
@@ -137,15 +137,25 @@ function playScene(scene) {
 
     if (current.ending) {
         choicesDiv.innerHTML = `<h2>${current.ending}</h2>`;
+
+       
+        let restartButton = document.createElement("button");
+        restartButton.textContent = "Restart Game";
+        restartButton.classList.add("choice-button");
+        restartButton.onclick = () => {
+            window.location.href = "intro.html"; 
+        };
+        choicesDiv.appendChild(restartButton);
+
         return;
     }
 
-    // Clear previous timer and remove warning effect
+   
     clearInterval(timerInterval);
     let timerElement = document.getElementById("timer");
     timerElement.classList.remove("timer-warning");
 
-    // If there are choices, display them and start the timer
+    
     if (current.choices && current.choices.length > 0) {
         current.choices.forEach(choice => {
             let button = document.createElement("button");
@@ -158,7 +168,7 @@ function playScene(scene) {
             choicesDiv.appendChild(button);
         });
 
-        // Start countdown timer (15 seconds)
+        
         startCountdown(scene);
     } else {
         console.warn("No choices available for this scene:", scene);
@@ -174,12 +184,12 @@ function startCountdown() {
         timeLeft--;
         timerElement.textContent = `Time left: ${timeLeft}s`;
 
-        // Apply warning effect when 5 seconds remain
+        
         if (timeLeft === 5) {
             timerElement.classList.add("timer-warning");
         }
 
-        // If time runs out, show custom popup and restart game
+        
         if (timeLeft === 0) {
             clearInterval(timerInterval);
             showPopup();
@@ -203,6 +213,6 @@ function showPopup() {
 function closePopup() {
     const popup = document.querySelector(".custom-popup");
     popup.remove();
-    startGame(); // Restart the game
+    startGame(); 
 }
 

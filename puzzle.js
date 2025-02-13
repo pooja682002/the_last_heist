@@ -11,13 +11,13 @@ function checkCode() {
         message.style.color = "lightgreen";
         setTimeout(() => {
             window.location.href = "intro.html"; 
-        }, 2000);
+        }, 1500);
     } else {
-        message.textContent = "❌ Wrong code! The police caught you!";
+        message.textContent = "❌ Wrong code! ";
         message.style.color = "red";
         setTimeout(() => {
             window.location.href = "index.html"; 
-        }, 2000);
+        }, 1500);
     }
 }
 

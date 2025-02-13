@@ -13,7 +13,7 @@ body {
     min-height: 100vh;
 }
 
-/* Dark overlay for better readability */
+
 body::before {
     content: "";
     position: absolute;
@@ -46,7 +46,7 @@ h1 {
     animation: slideInFromTop 1.5s ease-out;
 }
 
-/* Rules Styling */
+
 .clues {
     font-family: "Bungee Inline", serif;
     background: rgba(30, 30, 30, 0.9);
@@ -63,7 +63,7 @@ h1 {
     color: #E0E0E0;
 }
 
-/* Puzzle Styling */
+
 .puzzle-container {
     margin-top: 20px;
     animation: popUp 1.5s ease-in-out;
@@ -121,7 +121,7 @@ button:hover {
     background: rgba(150, 0, 0, 0.4);
 }
 
-/* Keyframe Animations */
+
 @keyframes popUp {
     from { transform: scale(0.8); opacity: 0; }
     to { transform: scale(1); opacity: 1; }
@@ -137,7 +137,7 @@ button:hover {
     to { transform: translateY(0); opacity: 1; }
 }
 
-/* Responsive Design */
+
 @media (max-width: 768px) {
     .container {
         width: 90%;
