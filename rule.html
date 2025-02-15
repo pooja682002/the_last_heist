@@ -26,5 +26,27 @@
             <a href="index.html">⬅️ Back to Home</a>
         </div>
     </div>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            let rules = document.querySelectorAll(".rule-book li");
+            
+            
+            rules.forEach(rule => {
+                rule.style.opacity = "0"; 
+                rule.style.transform = "translateX(-30px)"; 
+            });
+    
+         
+            rules.forEach((rule, index) => {
+                setTimeout(() => {
+                    rule.style.opacity = "1";
+                    rule.style.transform = "translateX(0)"; 
+                    rule.style.transition = "opacity 1s ease-in-out, transform 0.8s ease-in-out";
+                }, index * 1000); 
+            });
+        });
+    </script>
+    
+    
 </body>
 </html>

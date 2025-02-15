@@ -64,6 +64,10 @@ h1 {
     margin: 10px 0;
     color: #E0E0E0;
 }
+strong {
+    color: #9ed6c4; /* Gold color (you can change it to any color you like) */
+    font-weight: bold;
+}
 
 
 .puzzle-container {

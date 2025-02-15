@@ -76,20 +76,18 @@ h1 {
     padding: 12px;
     background: rgba(255, 0, 0, 0.25);
     border-left: 6px solid #582b2b;
-    transition: transform 0.3s ease-in-out;
-    animation: fadeInRule 1s ease-in-out;
+    opacity: 0; 
+    transform: translateX(-30px);
+    transition: opacity 1s ease-in-out, transform 0.8s ease-in-out;
 }
+
 
 .rule-book li:hover {
     transform: scale(1.08);
     background: rgba(122, 98, 98, 0.5);
 }
 
-.rule-book li:nth-child(1) { animation-delay: 0.4s; }
-.rule-book li:nth-child(2) { animation-delay: 0.8s; }
-.rule-book li:nth-child(3) { animation-delay: 1.2s; }
-.rule-book li:nth-child(4) { animation-delay: 1.6s; }
-.rule-book li:nth-child(5) { animation-delay: 2s; }
+
 
 button {
     font-family: "Bungee Inline", serif;
