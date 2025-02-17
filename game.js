@@ -2,7 +2,7 @@ const story = {
     start: {
         text: "The crew is assembled. The plan is set. Tonight, you’ll attempt the most daring heist in history—the Bank of Madrid. The Professor’s voice crackles: 'No mistakes. The police are always a step ahead.'\n\nYour heart pounds. This is it.",
         img: "assets/images/plan.webp",
-        sound: "heartbeat-sound",
+        
         choices: [
             { text: "Head to the bank", next: "setup" },
             { text: "Double-check escape routes", next: "professorCall" }
@@ -12,7 +12,7 @@ const story = {
     setup: {
         text: "You arrive. The city is eerily silent. A shadow moves in the alley, and flickering streetlights hint at trouble.",
         img: "assets/images/Scene1.webp",
-        sound: "suspense-sound",
+        
         choices: [
             { text: "Proceed as planned", next: "insideBank" },
             { text: "Signal the team to hold", next: "professorCall" }
@@ -22,7 +22,7 @@ const story = {
     professorCall: {
         text: "'We have a problem,' the Professor warns. 'There’s an informant among us.'\n\nWho can you trust?",
         img: "assets/images/ProfessorCall.webp",
-        sound: "radio-static",
+        
         choices: [
             { text: "Continue with caution", next: "insideBank" },
             { text: "Abort the mission", next: "abort" }
@@ -32,7 +32,7 @@ const story = {
     insideBank: {
         text: "You breach the bank. Hostages under control. Suddenly, an alarm blares—someone triggered it. A mistake, or sabotage?",
         img: "assets/images/inside bank.webp",
-        sound: "alarm-sound",
+        
         choices: [
             { text: "Lock the doors & continue", next: "lockDoors" },
             { text: "Scan the hostages", next: "hostageCheck" }
@@ -87,7 +87,7 @@ const story = {
     vaultTunnel: {
         text: "The vault door swings open! As you fill the bags, motion detectors trigger. Move fast.",
         img: "assets/images/vaulttunnel.webp",
-        sound: "alarm-sound",
+        
         choices: [
             { text: "Navigate the laser grid", next: "laserGrid" },
             { text: "Take hostages as shields", next: "hostages" }
@@ -142,7 +142,7 @@ const story = {
     finalEscape: {
         text: "You find an abandoned parking lot. A getaway car roars to life. As you speed away, police scanners report you in the wrong part of the city. You did it.",
         img: "assets/images/carescape.webp",
-        sound: "victory-sound",
+        
         choices: [],
         ending: "The Perfect Heist"
     },
@@ -164,7 +164,7 @@ const story = {
     fight: {
         text: "Gunfire erupts. The team is taking heavy damage. One last chance to escape. Do you take it?",
         img: "assets/images/fight.webp",
-        sound: "gunshot-sound",
+        
         choices: [
             { text: "Escape through the tunnels", next: "escapeRoute" },
             { text: "Go down fighting", next: "dead" }
@@ -188,7 +188,7 @@ const story = {
     success: {
         text: "You grab the helicopter skid and hoist yourself in. The city shrinks below as you vanish into the night. A clean escape.",
         img: "assets/images/helicopterescape.webp",
-        sound: "victory-sound",
+        
         choices: [],
         ending: "The Perfect Getaway"
     },
@@ -209,6 +209,9 @@ function startGame() {
     let gameContainer = document.getElementById("game");
     gameContainer.classList.remove("hidden"); 
     gameContainer.style.display = "flex"; 
+
+
+   
     playScene("start");
     document.getElementById("background-music").play();
 }
@@ -224,11 +227,7 @@ function playScene(scene) {
     let choicesDiv = document.getElementById("choices");
     choicesDiv.innerHTML = ""; 
 
-    if (current.sound) {
-        let sound = document.getElementById(current.sound);
-        if (sound) sound.play();
-    }
-
+   
     if (current.ending) {
         choicesDiv.innerHTML = `<h2>${current.ending}</h2>`;
 
